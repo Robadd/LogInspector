@@ -25,8 +25,8 @@ public class MessageHandler extends CustomMessageHandler
 		if (qName.equals("event"))
 		{
 			msg = new ServerLog();
-			msg.setLevel(LogLevel.getByValue(attributes.getValue("level")));
-			msg.setThread(attributes.getValue("thread"));
+			msg.setLogLevel(LogLevel.getByValue(attributes.getValue("level")));
+			msg.setThreadName(attributes.getValue("thread"));
 			msg.setTime(DateUtils.fromString(attributes.getValue("timestamp")));
 			msg.setLogger(attributes.getValue("logger"));
 		}

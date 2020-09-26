@@ -2,21 +2,19 @@ package de.robadd.loginspector.reader.handler;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 import de.robadd.loginspector.reader.model.LogLevel;
 import de.robadd.loginspector.reader.model.events.ServerLogIndex;
 import de.robadd.loginspector.reader.processor.MessageProcessor;
 import de.robadd.loginspector.utils.DateUtils;
 
-public class MessageIndexHandler extends DefaultHandler
+public class MessageIndexHandler extends CustomMessageHandler
 {
-	private final MessageProcessor processor;
+	private MessageProcessor processor;
 	private ServerLogIndex msg;
 
-	public MessageIndexHandler(final MessageProcessor processor)
+	public MessageIndexHandler()
 	{
-		this.processor = processor;
 	}
 
 	@Override
@@ -45,5 +43,11 @@ public class MessageIndexHandler extends DefaultHandler
 			processor.process(msg);
 			msg = null;
 		}
+	}
+
+	@Override
+	public void setProcessor(final MessageProcessor processor)
+	{
+		this.processor = processor;
 	}
 }

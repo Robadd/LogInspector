@@ -14,9 +14,12 @@ import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.JTextPane;
 
+import de.robadd.loginspector.EventIndex;
 import de.robadd.loginspector.reader.LogFileReader;
 import de.robadd.loginspector.reader.handler.CustomMessageHandler;
 import de.robadd.loginspector.reader.handler.MessageHandler;
+import de.robadd.loginspector.reader.handler.MessageIndexHandler;
+import de.robadd.loginspector.reader.processor.Indexer;
 import de.robadd.loginspector.reader.processor.MessageProcessor;
 import de.robadd.loginspector.reader.processor.UiOutputProcessor;
 import de.robadd.loginspector.ui.component.SearchSettingsPanel;
@@ -81,8 +84,13 @@ public class MainWindow
 							.getTransferData(DataFlavor.javaFileListFlavor);
 					for (File file : droppedFiles)
 					{
-						setFile(file);
-						System.out.println(file.getAbsolutePath());
+						new LogFileReader.Builder().setMessageHandler(new MessageIndexHandler())
+								.setProcessor(new Indexer()).build().read(file);
+						System.out.println(EventIndex.getInstance().getClassNames());
+						System.out.println(EventIndex.getInstance().getBegin());
+						System.out.println(EventIndex.getInstance().getEnd());
+						System.out.println(EventIndex.getInstance().getLogLevels());
+						System.out.println(EventIndex.getInstance().getThreadNames());
 					}
 				}
 				catch (Exception ex)

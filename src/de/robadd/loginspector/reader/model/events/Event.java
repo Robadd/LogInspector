@@ -2,6 +2,8 @@ package de.robadd.loginspector.reader.model.events;
 
 import java.util.Calendar;
 
+import de.robadd.loginspector.reader.model.LogLevel;
+
 public interface Event
 {
 	public boolean isBetween(final Calendar from, final Calendar to);
@@ -15,4 +17,11 @@ public interface Event
 	public void setClassName(String className);
 
 	public String getStringRepresentation();
+
+	public String getThreadName();
+
+	public LogLevel getLogLevel();
+
+	public Calendar getTime();
+
 }

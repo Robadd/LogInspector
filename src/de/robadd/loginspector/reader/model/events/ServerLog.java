@@ -37,7 +37,8 @@ public class ServerLog implements Event
 	/**
 	 * @return the thread
 	 */
-	public String getThread()
+	@Override
+	public String getThreadName()
 	{
 		return thread;
 	}
@@ -45,7 +46,7 @@ public class ServerLog implements Event
 	/**
 	 * @param thread the thread to set
 	 */
-	public void setThread(final String thread)
+	public void setThreadName(final String thread)
 	{
 		this.thread = thread;
 	}
@@ -53,6 +54,7 @@ public class ServerLog implements Event
 	/**
 	 * @return the time
 	 */
+	@Override
 	public Calendar getTime()
 	{
 		return time;
@@ -69,7 +71,8 @@ public class ServerLog implements Event
 	/**
 	 * @return the level
 	 */
-	public LogLevel getLevel()
+	@Override
+	public LogLevel getLogLevel()
 	{
 		return level;
 	}
@@ -77,7 +80,7 @@ public class ServerLog implements Event
 	/**
 	 * @param level the level to set
 	 */
-	public void setLevel(final LogLevel level)
+	public void setLogLevel(final LogLevel level)
 	{
 		this.level = level;
 	}
