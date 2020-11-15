@@ -200,11 +200,8 @@ public class ServerLog implements Event
 	@Override
 	public String toString()
 	{
-		return super.toString();
-//		"<event logger=\"%s\" timestamp=\"17.08.2020 0:00:00\" level=\"%s\" thread=\"%s\">\r\n" +
-//		"		<message><![CDATA[%s]]></message>\r\n" +
-//		"		<locationInfo class=\"%s\" method=\"%s\" file=\"%s\" line=\"%i\"/>\r\n" +
-//		"		</event>"
+		return "ServerLog [logger=" + logger + ", thread=" + thread + ", time=" + time + ", level=" + level + ", message="
+				+ message + ", clazz=" + clazz + ", method=" + method + ", file=" + file + ", line=" + line + "]";
 	}
 
 	@Override
@@ -212,4 +209,17 @@ public class ServerLog implements Event
 	{
 		return toString();
 	}
+
+	@Override
+	public void setLogLevel(final String logLevel)
+	{
+		level = LogLevel.getByValue(logLevel);
+	}
+
+	@Override
+	public boolean isLogLevel(final String logLevel)
+	{
+		return level.equals(LogLevel.getByValue(logLevel));
+	}
+
 }

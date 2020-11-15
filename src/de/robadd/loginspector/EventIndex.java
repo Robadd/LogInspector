@@ -2,7 +2,9 @@ package de.robadd.loginspector;
 
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import de.robadd.loginspector.reader.model.LogLevel;
 import de.robadd.loginspector.reader.model.events.Event;
@@ -44,25 +46,25 @@ public class EventIndex
 	/**
 	 * @return the classNames
 	 */
-	public Set<String> getClassNames()
+	public List<String> getClassNames()
 	{
-		return classNames;
+		return classNames.stream().sorted().collect(Collectors.toList());
 	}
 
 	/**
 	 * @return the threadNames
 	 */
-	public Set<String> getThreadNames()
+	public List<String> getThreadNames()
 	{
-		return threadNames;
+		return threadNames.stream().sorted().collect(Collectors.toList());
 	}
 
 	/**
 	 * @return the logLevels
 	 */
-	public Set<LogLevel> getLogLevels()
+	public List<LogLevel> getLogLevels()
 	{
-		return logLevels;
+		return logLevels.stream().collect(Collectors.toList());
 	}
 
 	/**

@@ -14,7 +14,7 @@ public interface Event
 
 	public String getClassName();
 
-	public void setClassName(String className);
+	public void setClassName(final String className);
 
 	public String getStringRepresentation();
 
@@ -23,5 +23,9 @@ public interface Event
 	public LogLevel getLogLevel();
 
 	public Calendar getTime();
+
+	public void setLogLevel(final String logLevel);
+
+	public boolean isLogLevel(final String logLevel);
 
 }

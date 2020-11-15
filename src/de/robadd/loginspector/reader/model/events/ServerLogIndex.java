@@ -28,6 +28,7 @@ public class ServerLogIndex implements Event
 	/**
 	 * @return the threadName
 	 */
+	@Override
 	public String getThreadName()
 	{
 		return threadName;
@@ -49,6 +50,7 @@ public class ServerLogIndex implements Event
 	/**
 	 * @return the logLevel
 	 */
+	@Override
 	public LogLevel getLogLevel()
 	{
 		return logLevel;
@@ -65,6 +67,7 @@ public class ServerLogIndex implements Event
 	/**
 	 * @return the time
 	 */
+	@Override
 	public Calendar getTime()
 	{
 		return time;
@@ -143,6 +146,18 @@ public class ServerLogIndex implements Event
 	public String getStringRepresentation()
 	{
 		return toString();
+	}
+
+	@Override
+	public void setLogLevel(final String logLevel)
+	{
+		this.logLevel = LogLevel.getByValue(logLevel);
+	}
+
+	@Override
+	public boolean isLogLevel(final String logLevel)
+	{
+		return this.logLevel.equals(LogLevel.getByValue(logLevel));
 	}
 
 }
